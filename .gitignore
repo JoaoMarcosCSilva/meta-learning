@@ -1,4 +1,5 @@
-omniglot_resided
+omniglot_resized
 __pycache__
 *.ipynb
 test.py
+train.py

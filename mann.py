@@ -33,7 +33,12 @@ def MANN(num_classes = 5, num_samples_per_class = 2):
         labels = y_true[:, -1]
         return tf.reduce_mean(tf.keras.losses.CategoricalCrossentropy(from_logits = False)(labels, preds))
 
+    def accuracy (y_true, y_pred):
+        labels = y_true[:, -1]
+        preds = y_pred[:, -1]
+        return tf.keras.metrics.categorical_accuracy(labels, preds)
+
     model = tf.keras.Model([images, labels], outputs)
-    model.compile(loss = loss, optimizer = 'Adam')
+    model.compile(loss = loss, optimizer = 'Adam', metrics = [accuracy])
 
     return model

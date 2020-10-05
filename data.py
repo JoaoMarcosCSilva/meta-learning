@@ -56,7 +56,7 @@ class DataGenerator(tf.keras.utils.Sequence):
         for batch_files in files:
             # Loads each image
             images = np.stack([load_image(p[0]) for p in batch_files])
-            images = np.reshape(images, (self.n_samples_per_class, self.n_classes, 28, 28))
+            images = np.reshape(images, (self.n_samples_per_class, self.n_classes, 28, 28), 'F')
             
             # Converts the labels to categorical
             labels = [p[1] for p in batch_files]
